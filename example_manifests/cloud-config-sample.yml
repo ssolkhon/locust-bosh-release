@@ -1,0 +1,38 @@
+---
+resource_pools:
+- name: small
+  network: default
+  stemcell:
+    name: bosh-openstack-kvm-ubuntu-trusty-go_agent
+    version: latest
+  cloud_properties:
+    instance_type: m1.small
+    availability_zone: AZ1
+- name: medium
+  network: default
+  stemcell:
+    name: bosh-openstack-kvm-ubuntu-trusty-go_agent
+    version: latest
+  cloud_properties:
+    instance_type: m1.medium
+    availability_zone: AZ1
+
+networks:
+  - name: default
+    type: dynamic
+    cloud_properties:
+      net_id: REPLACE_WITH_YOUR_NET_ID
+      security_groups:
+      - REPLACE_WITH_YOUR_SG
+  - name: floating
+    type: vip
+    cloud_properties:
+      net_id: REPLACE_WITH_YOUR_NET_ID
+      security_groups:
+      - REPLACE_WITH_YOUR_SG
+
+compilation:
+  workers: 5
+  reuse_compilation_vms: true
+  resource_pool: small
+  network: cf-untrusted-3320

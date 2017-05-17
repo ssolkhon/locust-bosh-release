@@ -1,0 +1,26 @@
+---
+name: locust
+director_uuid: REPLACE_WITH_DIRECTOR_UUID
+
+releases:
+- {name: locust, version: latest}
+
+update:
+  canaries: 1
+  max_in_flight: 3
+  canary_watch_time: 15000-30000
+  update_watch_time: 15000-300000
+
+jobs:
+- name: locust_master
+  instances: 1
+  templates:
+  - {name: locust_master, release: locust}
+  resource_pool: medium
+  networks:
+  - default:
+    - dns
+    - gateway
+    name: default
+  - name: floating
+    static_ips: [10.0.0.20]
