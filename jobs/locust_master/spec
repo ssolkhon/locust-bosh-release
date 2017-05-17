@@ -2,5 +2,6 @@
 name: locust_master
 templates:
   ctl.erb: bin/ctl
+  install.erb: bin/pre-start
 
 packages:
