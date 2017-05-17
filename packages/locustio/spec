@@ -1,0 +1,7 @@
+---
+name: locustio
+
+dependencies:
+
+files:
+- locust/**/*
