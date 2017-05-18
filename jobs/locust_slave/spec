@@ -1,0 +1,7 @@
+---
+name: locust_slave
+templates:
+  ctl.erb: bin/ctl
+  install.erb: bin/pre-start
+
+packages:

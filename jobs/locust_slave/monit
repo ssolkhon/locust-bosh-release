@@ -1,0 +1,5 @@
+check process locust_slave
+  with pidfile /var/vcap/sys/run/locust_slave/pid
+  start program "/var/vcap/jobs/locust_slave/bin/ctl start"
+  stop program "/var/vcap/jobs/locust_slave/bin/ctl stop"
+  group vcap

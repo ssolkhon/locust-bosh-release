@@ -16,7 +16,7 @@ jobs:
   instances: 1
   templates:
   - {name: locust_master, release: locust}
-  resource_pool: medium
+  resource_pool: small
   networks:
   - default:
     - dns
@@ -24,3 +24,10 @@ jobs:
     name: default
   - name: floating
     static_ips: [10.0.0.20]
+- name: locust_slave
+  instances: 3
+  templates:
+  - {name: locust_slave, release: locust}
+  resource_pool: small
+  networks:
+  - name: default
