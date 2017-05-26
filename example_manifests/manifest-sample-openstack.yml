@@ -1,6 +1,6 @@
 ---
 name: locust
-director_uuid: REPLACE_WITH_DIRECTOR_UUID
+director_uuid: ((director_uuid))
 
 releases:
 - {name: locust, version: latest}
@@ -14,6 +14,7 @@ update:
 jobs:
 - name: locust_master
   instances: 1
+  azs: [z1]
   templates:
   - {name: locust_master, release: locust}
   resource_pool: small
@@ -23,9 +24,11 @@ jobs:
     - gateway
     name: default
   - name: floating
-    static_ips: [10.0.0.20]
+    static_ips: [((locust_master_floating))]
+
 - name: locust_slave
   instances: 3
+  azs: [z1,z2]
   templates:
   - {name: locust_slave, release: locust}
   resource_pool: small
