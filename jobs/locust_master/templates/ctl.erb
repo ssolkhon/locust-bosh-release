@@ -12,7 +12,9 @@ case $1 in
 
     echo $$ > $PIDFILE
 
-    /usr/local/bin/locust -f /opt/locustfile.py \
+    cd /var/vcap/packages/locustfile
+
+    /usr/local/bin/locust -f ./locustfile.py \
     --web-port=80 \
     --master --host=http://google.co.uk \
       >>  $LOG_DIR/locust.stdout.log \

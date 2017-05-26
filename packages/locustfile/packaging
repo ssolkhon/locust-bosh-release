@@ -1,0 +1,3 @@
+set -e
+
+cp -a locust/locustfile.py ${BOSH_INSTALL_TARGET}

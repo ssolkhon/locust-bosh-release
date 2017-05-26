@@ -1,0 +1,7 @@
+---
+name: locustfile
+
+dependencies: []
+
+files:
+- locust/locustfile.py

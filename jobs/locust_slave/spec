@@ -5,3 +5,4 @@ templates:
   install.erb: bin/pre-start
 
 packages:
+- locustfile
