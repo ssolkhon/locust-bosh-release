@@ -34,5 +34,10 @@ networks:
 compilation:
   workers: 5
   reuse_compilation_vms: true
-  resource_pool: small
-  network: cf-untrusted-3320
+  az: z1
+  network: default
+  stemcell:
+    name: bosh-openstack-kvm-ubuntu-trusty-go_agent
+    version: latest
+  cloud_properties:
+    instance_type: m1.small
