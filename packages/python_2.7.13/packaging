@@ -1,5 +1,6 @@
-set -e
+set -e -x
 
+# Install Python 2.7
 tar xfv python/python-2.7.13.tar.gz
 
 pushd python-2.7.13
@@ -8,4 +9,20 @@ pushd python-2.7.13
 
   make
   make install
+popd
+
+
+# Install setuptools and wheel
+unzip python/setuptools-36.0.1.zip
+
+pushd setuptools-36.0.1
+  ${BOSH_INSTALL_TARGET}/bin/python \
+  ./setup.py install
+popd
+
+tar xfv python/wheel-0.30.0a0.tar.gz
+
+pushd wheel-0.30.0a0
+  ${BOSH_INSTALL_TARGET}/bin/python \
+  ./setup.py install
 popd
